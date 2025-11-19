@@ -1,10 +1,15 @@
 import os
 import requests
+from typing import Optional
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID =  os.getenv("CHAT_ID")
+
+BOT_TOKEN: Optional[str] = None
+CHAT_ID: Optional[str] = None
 
 def startup():
+    global BOT_TOKEN, CHAT_ID
+    BOT_TOKEN = os.environ.get("BOT_TOKEN")
+    CHAT_ID = os.environ.get("CHAT_ID")
     if not BOT_TOKEN or not CHAT_ID:
         raise ValueError("BOT_TOKEN and CHAT_ID environment variables must be set.")
 
@@ -17,7 +22,7 @@ def notify(msg: str):
         response.raise_for_status()
         data = response.json()
         if not data.get("ok"):
-            print("Failed to send Telegram message:", data)
+            raise RuntimeError(f"Telegram API error: {data}")
     except Exception as e:
         print("Failed to send Telegram message:", e)
 
