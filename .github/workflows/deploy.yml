@@ -1,2 +1,33 @@
+name: Deploy to DO serverless functions
+
 on:
+  push:
+    branches:
+      - main
+
+
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v5
+
+      - name: Install DO CLI
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_ACCESS_TOKEN }}
+
+      - name: Install serverless DO CLI
+        run: doctl serverless install
+
+
+      - name: Deploy to DO serverless functions
+        run: doctl serverless connect --no-prompt
+
+      - name : Deploy functions
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: doctl serverless deploy . --verbose
