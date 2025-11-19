@@ -22,10 +22,6 @@ jobs:
       - name: Install serverless DO CLI
         run: doctl serverless install
 
-
-      - name: Deploy to DO serverless functions
-        run: doctl serverless connect --no-prompt
-
       - name : Deploy functions
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
