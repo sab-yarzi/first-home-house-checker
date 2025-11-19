@@ -3,7 +3,7 @@ name: Deploy to DO serverless functions
 on:
   push:
     branches:
-      - main
+      - master
 
 
 jobs:
