@@ -11,6 +11,7 @@ packages:
               cron: "0 * * * *" # Every hour at minute 0
               withBody: {}
 
-environment:
-  BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-  CHAT_ID: ${TELEGRAM_CHAT_ID}
+
+#environment:
+#  BOT_TOKEN: ${BOT_TOKEN}
+#  CHAT_ID: ${CHAT_ID}
