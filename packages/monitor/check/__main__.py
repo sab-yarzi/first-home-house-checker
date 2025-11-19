@@ -13,7 +13,11 @@ def notify(msg: str):
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     try:
-        requests.post(url, json={"chat_id": CHAT_ID, "text": msg}, timeout=10)
+        response = requests.post(url, json={"chat_id": CHAT_ID, "text": msg}, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+        if not data.get("ok"):
+            print("Failed to send Telegram message:", data)
     except Exception as e:
         print("Failed to send Telegram message:", e)
 
