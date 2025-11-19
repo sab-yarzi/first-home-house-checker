@@ -22,6 +22,11 @@ jobs:
       - name: Install serverless DO CLI
         run: doctl serverless install
 
+      - name: Connect to functions namespace
+        env:
+          DO_FUNCTIONS_NAMESPACE: ${{ secrets.DO_FUNCTIONS_NAMESPACE }}
+        run: doctl serverless connect "$DO_FUNCTIONS_NAMESPACE"
+
       - name : Deploy functions
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
