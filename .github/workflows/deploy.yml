@@ -28,5 +28,8 @@ jobs:
         run: doctl serverless connect "$DO_FUNCTIONS_NAMESPACE"
 
       - name : Deploy functions
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           doctl serverless deploy . --verbose 
