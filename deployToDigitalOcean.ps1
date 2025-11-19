@@ -19,4 +19,3 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Output "Deployment succeeded."
 
-doctl serverless invoke monitor/check

@@ -19,10 +19,9 @@ def notify(msg: str):
 
 def main(args):
     ##Test notify
-    if args and args.get("test_notify") == "true":
+    if args and str(args.get("test_notify")).lower() == "true":
         notify("Test message from ShareToBuy monitor.")
-        return {"ok" : True, "mode": "Test"}
-
+        return {"ok": True, "mode": "Test"}
 
     url='https://www.sharetobuy.com/properties-count/?location=Hackney%20-%20Hackney&locationId=106452&lat=51.55492&lon=-0.060450000000000004&developmentId=&hasPolygon=1&userSearchId=&hereLocation=&hereLocation=%23%23%23hereLocation%23%23%23&locationId=106452&lat=51.55492&lon=-0.060450000000000004&developmentId=&hasPolygon=1&userSearchId=&radius=40&minBedrooms=&maxBedrooms=&schemeType%5B%5D=14&minMonthlyCost=&maxMonthlyCost=&minDeposit=&maxDeposit=&radius=40&rentOrBuy=2&createdAtPeriod=&minMinShareAvailable=&maxMinShareAvailable=&minFullMarketPrice=&maxFullMarketPrice=&viewType=1&campaignId=&developerId=&_token=f43dXRIWHwknKKWt1tLLanlXJPdnczEWdZDOhBYb&showAllPopular=showAllPopular&propertyTypeGroup=undefined&showAllOther=1&_token=f43dXRIWHwknKKWt1tLLanlXJPdnczEWdZDOhBYb&action=%2Fproperties-count%2F&_=1763550069528'
     response = None
