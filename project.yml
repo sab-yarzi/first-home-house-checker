@@ -1,0 +1,16 @@
+packages:
+  - name: monitor # Functions package name
+    functions:
+      - name: check # Function name inside package
+        runtime: python3.9
+        web: false # Not exposed as web function
+
+        env:
+          BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+          CHAT_ID: ${TELEGRAM_CHAT_ID}
+        triggers:
+          - name: check-every-1-hour
+            sourceType: scheduler
+            sourceDetails:
+              cron: "0 * * * *" # Every hour at minute 0
+              withBody: {}
