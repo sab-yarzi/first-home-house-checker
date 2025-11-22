@@ -2,7 +2,7 @@ import os
 import requests
 from typing import Optional
 from time import time
-from .metrics  import report_metrics
+from metrics  import report_metrics
 
 BOT_TOKEN: Optional[str] = None
 CHAT_ID: Optional[str] = None
