@@ -8,7 +8,7 @@ packages:
           - name: check-every-1-hour
             sourceType: scheduler
             sourceDetails:
-              cron: "0 */6 * * *" # Every 6 hours
+              cron: "0 */2 * * *" # Every 6 hours
               withBody: {}
 
 

@@ -77,10 +77,10 @@ def main(args):
 
     if count_of_properties_available > 0:
         print("Properties available!")
-        # try:
-        #     notify(f"Properties available: {count_of_properties_available}")
-        # except Exception as e:
-        #     print("Notify failed:", e)
+        try:
+            notify(f"Properties available: {count_of_properties_available}")
+        except Exception as e:
+            print("Notify failed:", e)
 
     return {
         "ok": True,
