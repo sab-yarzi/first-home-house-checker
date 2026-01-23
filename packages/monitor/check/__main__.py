@@ -2,7 +2,6 @@ import os
 import requests
 from typing import Optional
 from time import time
-from packages.metrics import report_metrics
 
 BOT_TOKEN: Optional[str] = None
 CHAT_ID: Optional[str] = None
@@ -75,14 +74,13 @@ def main(args):
 
     print(f'Number of properties available: {count_of_properties_available}')
     print(f'Request duration: {duration:.2f}s')
-    report_metrics(count_of_properties_available, duration, status_code)
 
     if count_of_properties_available > 0:
         print("Properties available!")
-        try:
-            notify(f"Properties available: {count_of_properties_available}")
-        except Exception as e:
-            print("Notify failed:", e)
+        # try:
+        #     notify(f"Properties available: {count_of_properties_available}")
+        # except Exception as e:
+        #     print("Notify failed:", e)
 
     return {
         "ok": True,
